@@ -1,5 +1,5 @@
 # PaymentOptions
-This App is developed in .Net Core and Angular 11.
+This App is developed in .Net Core and Angular 13.
 
 This App generally focus on Book Ecommerce Selling Platform, where Payment Options also availble to manage. 
 
