@@ -1,0 +1,54 @@
+<div class="jumbotron py-3">
+  <h1 class="display-4 text-center">Books</h1>
+</div>
+
+<div class="wrapper">
+  <div class="checkout container" *ngFor="let pd of service.list">
+    <form novalidate autocomplete="off" #form="ngForm"  (submit)="onSubmit(form)" >
+      <input type="hidden" name="BookId"  [value]="pd.id" />
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title" name="Title">{{pd.title}}</h5>
+          <p class="card-text">{{pd.description}}</p>
+          <p class="card-text"><small class="text-muted">Author: {{pd.author}}</small></p>
+          <p class="card-text"><small class="text-muted">Price: {{pd.price}}</small></p>
+        </div>
+
+      </div>
+      <section>
+        <div class="bt-drop-in-wrapper">
+          <div id="bt-dropin"></div>
+        </div>
+      </section>
+
+
+      <button class="btn btn-info btn-lg btn-block " type="submit" [disabled]="form.invalid">Confirm payment - {{pd.price}}$</button>
+      <input type="hidden" name="nonce" id="nonce" />
+    </form>
+    <hr />
+    <script>
+      var client_token = "eyJ2ZXJzaW9uIjoyLCJhdXRob3JpemF0aW9uRmluZ2VycHJpbnQiOiJleUowZVhBaU9pSktWMVFpTENKaGJHY2lPaUpGVXpJMU5pSXNJbXRwWkNJNklqSXdNVGd3TkRJMk1UWXRjMkZ1WkdKdmVDSXNJbWx6Y3lJNkltaDBkSEJ6T2k4dllYQnBMbk5oYm1SaWIzZ3VZbkpoYVc1MGNtVmxaMkYwWlhkaGVTNWpiMjBpZlEuZXlKbGVIQWlPakUyTnprMk9EWTRPRGNzSW1wMGFTSTZJbVE1WmpNeFptTTRMVFprTlRZdE5EazRZaTA0TjJGbExXVXhORGcwWkRNMU5qTXpZaUlzSW5OMVlpSTZJalpyZG0weloyMDBhREptZVhSeGJuRWlMQ0pwYzNNaU9pSm9kSFJ3Y3pvdkwyRndhUzV6WVc1a1ltOTRMbUp5WVdsdWRISmxaV2RoZEdWM1lYa3VZMjl0SWl3aWJXVnlZMmhoYm5RaU9uc2ljSFZpYkdsalgybGtJam9pTm10MmJUTm5iVFJvTW1aNWRIRnVjU0lzSW5abGNtbG1lVjlqWVhKa1gySjVYMlJsWm1GMWJIUWlPbVpoYkhObGZTd2ljbWxuYUhSeklqcGJJbTFoYm1GblpWOTJZWFZzZENKZExDSnpZMjl3WlNJNld5SkNjbUZwYm5SeVpXVTZWbUYxYkhRaVhTd2liM0IwYVc5dWN5STZlMzE5LkoxUi1iR0pjbkR6LUM4U0s5UnMyVjVBLWl5cTQ0ZnFpUXRWYkJVVEJyWXcxLTZCZS1EeGNuLTgzdkpnSjZqamdJQVpzSHA3eHpKYTVLdnRqLVNOaTd3IiwiY29uZmlnVXJsIjoiaHR0cHM6Ly9hcGkuc2FuZGJveC5icmFpbnRyZWVnYXRld2F5LmNvbTo0NDMvbWVyY2hhbnRzLzZrdm0zZ200aDJmeXRxbnEvY2xpZW50X2FwaS92MS9jb25maWd1cmF0aW9uIiwiZ3JhcGhRTCI6eyJ1cmwiOiJodHRwczovL3BheW1lbnRzLnNhbmRib3guYnJhaW50cmVlLWFwaS5jb20vZ3JhcGhxbCIsImRhdGUiOiIyMDE4LTA1LTA4IiwiZmVhdHVyZXMiOlsidG9rZW5pemVfY3JlZGl0X2NhcmRzIl19LCJjbGllbnRBcGlVcmwiOiJodHRwczovL2FwaS5zYW5kYm94LmJyYWludHJlZWdhdGV3YXkuY29tOjQ0My9tZXJjaGFudHMvNmt2bTNnbTRoMmZ5dHFucS9jbGllbnRfYXBpIiwiZW52aXJvbm1lbnQiOiJzYW5kYm94IiwibWVyY2hhbnRJZCI6IjZrdm0zZ200aDJmeXRxbnEiLCJhc3NldHNVcmwiOiJodHRwczovL2Fzc2V0cy5icmFpbnRyZWVnYXRld2F5LmNvbSIsImF1dGhVcmwiOiJodHRwczovL2F1dGgudmVubW8uc2FuZGJveC5icmFpbnRyZWVnYXRld2F5LmNvbSIsInZlbm1vIjoib2ZmIiwiY2hhbGxlbmdlcyI6W10sInRocmVlRFNlY3VyZUVuYWJsZWQiOnRydWUsImFuYWx5dGljcyI6eyJ1cmwiOiJodHRwczovL29yaWdpbi1hbmFseXRpY3Mtc2FuZC5zYW5kYm94LmJyYWludHJlZS1hcGkuY29tLzZrdm0zZ200aDJmeXRxbnEifSwicGF5cGFsRW5hYmxlZCI6dHJ1ZSwicGF5cGFsIjp7ImJpbGxpbmdBZ3JlZW1lbnRzRW5hYmxlZCI6dHJ1ZSwiZW52aXJvbm1lbnROb05ldHdvcmsiOnRydWUsInVudmV0dGVkTWVyY2hhbnQiOmZhbHNlLCJhbGxvd0h0dHAiOnRydWUsImRpc3BsYXlOYW1lIjoiU1ltYW50ZWMgc3lzdGVtcyIsImNsaWVudElkIjpudWxsLCJwcml2YWN5VXJsIjoiaHR0cDovL2V4YW1wbGUuY29tL3BwIiwidXNlckFncmVlbWVudFVybCI6Imh0dHA6Ly9leGFtcGxlLmNvbS90b3MiLCJiYXNlVXJsIjoiaHR0cHM6Ly9hc3NldHMuYnJhaW50cmVlZ2F0ZXdheS5jb20iLCJhc3NldHNVcmwiOiJodHRwczovL2NoZWNrb3V0LnBheXBhbC5jb20iLCJkaXJlY3RCYXNlVXJsIjpudWxsLCJlbnZpcm9ubWVudCI6Im9mZmxpbmUiLCJicmFpbnRyZWVDbGllbnRJZCI6Im1hc3RlcmNsaWVudDMiLCJtZXJjaGFudEFjY291bnRJZCI6InN5bWFudGVjc3lzdGVtcyIsImN1cnJlbmN5SXNvQ29kZSI6IlVTRCJ9fQ==";
+      var form = document.querySelector('#ngForm');
+
+      braintree.dropin.create({
+        authorization: client_token,
+        container: '#bt-dropin'
+      }, function (createErr, instance) {
+        form.addEventListener('submit', function (event) {
+          event.preventDefault();
+
+          instance.requestPaymentMethod(function (err, payload) {
+            if (err) {
+              return;
+            }
+
+            document.querySelector('#nonce').value = payload.nonce;
+            form.submit();
+          });
+        });
+      });
+    </script>
+  </div>
+</div>
+
+
